@@ -17,33 +17,21 @@ function generateTitleLinks(){
     /* get the article id */
     const postId=post.getAttribute("id");
     const postLink= '#'+ postId;
-    //const postTitle = optTitleSelector.getAttribute(text);
-    //console.log(postTitle );
-    const postTitle = post.querySelector(optTitleSelector).innerHTML; //cut title from post
-    const linkHTML = '<li><a href ="' + postLink + '"><span>'+ postTitle +'</span></a></li>';
-    //const linkHTML = '<li><a href ="' + postLink + '"><span>a</span></a></li>';
-    console.log(linkHTML);
-    titleList.innerHTML = titleList.innerHTML+ linkHTML;
-
-    
-    
-  }
-  //<a href="#article-1" class="active"><span>Article 1</span></a>
-  //article-1
-
-  
-
-    /* get the article id */
-
-
-    /* find the title element */
-
     /* get the title from the title element */
+    const postTitle = post.querySelector(optTitleSelector).innerHTML; //cut title from post
+     /* create HTML of the link */
+    const linkHTML = '<li><a href ="' + postLink + '"><span>'+ postTitle +'</span></a></li>';
+    console.log(linkHTML);
+     /* insert link into titleList */
+    titleList.innerHTML = titleList.innerHTML+ linkHTML; 
+  }
 
-    /* create HTML of the link */
-
-    /* insert link into titleList */
-
+  const links = document.querySelectorAll('.titles a');
+  console.log(links);
+  for (let link of links){
+    link.addEventListener('click', titleClickHandler);
+    console.log(link);
+  }
 }
 
 generateTitleLinks(); //wykonanie funkcji
@@ -98,12 +86,7 @@ function titleClickHandler(link){
 }
 
 
-const links = document.querySelectorAll('.titles a');
-console.log(links);
-for (let link of links){
-  link.addEventListener('click', titleClickHandler);
-  console.log(link);
-}
+
 
 
 

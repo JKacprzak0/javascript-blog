@@ -1,5 +1,57 @@
 'use strict'; // show errors
 
+const optArticleSelector = '.post',
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles';
+   //pytanie po co te opty?
+
+function generateTitleLinks(){
+  /* remove contents of titleList */
+  const titleList = document.querySelector(optTitleListSelector);
+  titleList.innerHTML = '';  //pytanie to usuwa z pojedynczego linka czy ze wszystkich na raz??
+  
+
+  /* for each article */
+  const posts = document.querySelectorAll(optArticleSelector);
+  for (let post of posts){
+    /* get the article id */
+    const postId=post.getAttribute("id");
+    const postLink= '#'+ postId;
+    //const postTitle = optTitleSelector.getAttribute(text);
+    //console.log(postTitle );
+    const postTitle = post.querySelector(optTitleSelector).innerHTML; //cut title from post
+    const linkHTML = '<li><a href ="' + postLink + '"><span>'+ postTitle +'</span></a></li>';
+    //const linkHTML = '<li><a href ="' + postLink + '"><span>a</span></a></li>';
+    console.log(linkHTML);
+    titleList.innerHTML = titleList.innerHTML+ linkHTML;
+
+    
+    
+  }
+  //<a href="#article-1" class="active"><span>Article 1</span></a>
+  //article-1
+
+  
+
+    /* get the article id */
+
+
+    /* find the title element */
+
+    /* get the title from the title element */
+
+    /* create HTML of the link */
+
+    /* insert link into titleList */
+
+}
+
+generateTitleLinks(); //wykonanie funkcji
+
+
+
+
+
 
 
 function titleClickHandler(link){
@@ -37,7 +89,8 @@ function titleClickHandler(link){
   /* find the correct article using the selector (value of 'href' attribute) [DONE] */
   const targetArticle=  document.querySelector(articleSelector);
   console.log(targetArticle);
-  //const targetArticle=  document.querySelector("[href= articleSelector]");
+  console.log("test");
+  
 
   /* add class 'active' to the correct article   [DONE] */
   console.log('clickedElement:', targetArticle);
@@ -51,3 +104,6 @@ for (let link of links){
   link.addEventListener('click', titleClickHandler);
   console.log(link);
 }
+
+
+

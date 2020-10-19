@@ -3,7 +3,7 @@
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles';
-   //pytanie po co te opty?
+//pytanie po co te opty?
 
 function generateTitleLinks(){
   /* remove contents of titleList */
@@ -15,14 +15,14 @@ function generateTitleLinks(){
   const posts = document.querySelectorAll(optArticleSelector);
   for (let post of posts){
     /* get the article id */
-    const postId=post.getAttribute("id");
+    const postId=post.getAttribute('id');
     const postLink= '#'+ postId;
     /* get the title from the title element */
     const postTitle = post.querySelector(optTitleSelector).innerHTML; //cut title from post
-     /* create HTML of the link */
+    /* create HTML of the link */
     const linkHTML = '<li><a href ="' + postLink + '"><span>'+ postTitle +'</span></a></li>';
     console.log(linkHTML);
-     /* insert link into titleList */
+    /* insert link into titleList */
     titleList.innerHTML = titleList.innerHTML+ linkHTML; 
   }
 
@@ -52,7 +52,7 @@ function titleClickHandler(link){
 
   for(let activeLink of activeLinks){
 
-      activeLink.classList.remove('active');
+    activeLink.classList.remove('active');
       
   }
 
@@ -68,16 +68,16 @@ function titleClickHandler(link){
 
   /* get 'href' attribute from the clicked link [DONE] */
   /* add class 'active' to the clicked link [DONE] */
- const clickedElement = this;
- console.log('clickedElement:', clickedElement);
- clickedElement.classList.add('active');
- const articleSelector=clickedElement.getAttribute("href");
- console.log(articleSelector);
+  const clickedElement = this;
+  console.log('clickedElement:', clickedElement);
+  clickedElement.classList.add('active');
+  const articleSelector=clickedElement.getAttribute('href');
+  console.log(articleSelector);
 
   /* find the correct article using the selector (value of 'href' attribute) [DONE] */
   const targetArticle=  document.querySelector(articleSelector);
   console.log(targetArticle);
-  console.log("test");
+
   
 
   /* add class 'active' to the correct article   [DONE] */

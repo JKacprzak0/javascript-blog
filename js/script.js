@@ -5,7 +5,8 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optArticleAuthorSelector = '.post-author',
-  optArticleAuthorListSelector= '.authors';
+  optArticleAuthorListSelector= '.authors',
+  optAllTagsSelector = '.tags';
 
 function generateTitleLinks(customSelector = ''){
 //function generateTitleLinks(){
@@ -93,7 +94,12 @@ function generateTags(){
       const linkTag = '<li><a href="#tag-'+ arrayTag + '">' + arrayTag + '</a></li>';
       /* insert HTML of all the links into the tags wrapper */
       tagList.innerHTML = tagList.innerHTML + linkTag;
-      /* END LOOP: for each tag */
+      const allTagList = document.querySelector(optAllTagsSelector);
+      if (allTagList.innerHTML.indexOf(linkTag) == -1){
+        console.log('weszlo');
+        allTagList.innerHTML = allTagList.innerHTML + linkTag;
+      }
+      //allTagList.innerHTML = allTagList;
     }
   /* END LOOP: for every article: */
   }
@@ -152,7 +158,6 @@ function tagClickHandler(tag){
 
 
 
-//to teraz robie autorow  TO ROBIE
 function generateAuthors(){
   /* find all articles */
   const posts = document.querySelectorAll(optArticleSelector);

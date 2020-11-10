@@ -76,6 +76,11 @@ function titleClickHandler(link){
 function generateTags(){
   /* find all articles */
   const posts = document.querySelectorAll(optArticleSelector);
+  /*create a variable allTags with empy array*/
+  //let allTags = [];
+  /*create a variable allTags with empy object*/
+  let allTagsObj = {};
+  console.log(allTagsObj);
 
   /* START LOOP: for every article: */
   for(let post of posts){
@@ -94,13 +99,26 @@ function generateTags(){
       const linkTag = '<li><a href="#tag-'+ arrayTag + '">' + arrayTag + '</a></li>';
       /* insert HTML of all the links into the tags wrapper */
       tagList.innerHTML = tagList.innerHTML + linkTag;
-      const allTagList = document.querySelector(optAllTagsSelector);
-      if (allTagList.innerHTML.indexOf(linkTag) == -1){
-        console.log('weszlo');
-        allTagList.innerHTML = allTagList.innerHTML + linkTag;
-      }
-      //allTagList.innerHTML = allTagList;
+      console.log(arrayTag);
+      /*check if this link is NOT already in allTags */
+      if(!Object.prototype.hasOwnProperty.call(allTagsObj, arrayTag)){
+        allTagsObj[arrayTag]=1;
+        /* add generated code to allTags array */
+        //allTags.push(linkTag);
+      } else {
+        allTagsObj[arrayTag]++;
+      } //end if
+    
+    } //end loop through array
+  
+
+    let allTagsHTML ='';
+    for (let tag in allTagsObj){
+      allTagsHTML += '<li><a href="#tag-'+ tag + '">' + tag + '(' + allTagsObj[tag] + ') ' + '</a></li>';
     }
+    const allTagList = document.querySelector(optAllTagsSelector);
+    allTagList.innerHTML = allTagsHTML;
+  
   /* END LOOP: for every article: */
   }
   const tags = document.querySelectorAll('.post-tags a');

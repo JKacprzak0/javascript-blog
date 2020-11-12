@@ -1,4 +1,4 @@
-{
+{   
     "env": {
         "browser": true,
         "es6": true
@@ -7,6 +7,7 @@
     "parserOptions": {
         "ecmaVersion": 2015
     },
+
     "rules": {
         "indent": [
             "error",
